@@ -9,11 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     @State var inputText = ""
-    @State var isOn = true
+    
     var body: some View {
-        VStack {
-            TextField("ここに文字を入力してください", text: $inputText)
-            Toggle("スイッチ", isOn: $isOn)
+        VStack(spacing: 20) {
+            TextField("ここに文字を入力", text: $inputText)
+                .keyboardType(.numberPad)
+            Text("価格：" + inputText)
+            Text("消費税8％：\((Double(inputText) ?? 0) * 0.08)")
+            Text("消費税10％：\((Double(inputText) ?? 0) * 0.1)")
+            
         }
         .padding()
     }
