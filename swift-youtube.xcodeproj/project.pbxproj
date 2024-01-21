@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE46150C2B5CEA8F0029EE71 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE46150B2B5CEA8F0029EE71 /* SecondView.swift */; };
 		EE581A262B5BD2BB00B32AEB /* swift_youtubeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE581A252B5BD2BB00B32AEB /* swift_youtubeApp.swift */; };
 		EE581A282B5BD2BB00B32AEB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE581A272B5BD2BB00B32AEB /* ContentView.swift */; };
 		EE581A2A2B5BD2C000B32AEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE581A292B5BD2C000B32AEB /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE46150B2B5CEA8F0029EE71 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		EE581A222B5BD2BB00B32AEB /* swift-youtube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swift-youtube.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE581A252B5BD2BB00B32AEB /* swift_youtubeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swift_youtubeApp.swift; sourceTree = "<group>"; };
 		EE581A272B5BD2BB00B32AEB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				EE581A252B5BD2BB00B32AEB /* swift_youtubeApp.swift */,
 				EE581A272B5BD2BB00B32AEB /* ContentView.swift */,
+				EE46150B2B5CEA8F0029EE71 /* SecondView.swift */,
 				EE581A292B5BD2C000B32AEB /* Assets.xcassets */,
 				EE581A2B2B5BD2C000B32AEB /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE46150C2B5CEA8F0029EE71 /* SecondView.swift in Sources */,
 				EE581A282B5BD2BB00B32AEB /* ContentView.swift in Sources */,
 				EE581A262B5BD2BB00B32AEB /* swift_youtubeApp.swift in Sources */,
 			);
