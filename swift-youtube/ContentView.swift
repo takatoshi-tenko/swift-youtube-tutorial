@@ -8,61 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var  randomNumber = 1
-    @State private var timer: Timer?
-    @State private var isRolling = false
-    @State var isSHowSecondView = false
-    
+    @State var taskData = [(title: "ジョギングする", completed: false),
+                           (title: "お花に水をやる", completed: false),
+                           (title: "部屋の掃除をする", completed: false),
+                           (title: "本を読む", completed: false),
+                           (title: "aaa", completed: false)]
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
-                Spacer()
-                Image(systemName: "die.face.\(randomNumber)")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width/2)
-                    .padding()
-                Spacer()
+            List(0..<taskData.count, id: \.self) { index in
                 Button {
-                    playDice()
+                    taskData[index].completed.toggle()
                 } label: {
-                    Text("サイコロを振る")
-                        .padding()
-                        .background(Color.orange)
-                        .foregroundColor(.black)
-                        .cornerRadius(10)
+                    HStack {
+                        Image(systemName: taskData[index].completed == true ? "checkmark.circle.fill" : "circle")
+                        Text(taskData[index].title)
+                    }
                 }
-                .disabled(isRolling)
-                Spacer()
-                NavigationLink {
-                    SecondView()
-                } label: {
-                    Text("SecondViewへナビ遷移")
-                }
-                Button("SecondViewへモーダル遷移") {
-                    isSHowSecondView = true
-                }
-                .padding()
-                .sheet(isPresented: $isSHowSecondView) {
-                    SecondView()
-                }
-
+                .foregroundColor(.primary)
             }
-            .padding()
-            .navigationTitle("画面1")
-        }
-    }
-    
-    func playDice() {
-        print("ボタンが押されたよ")
-        isRolling = true
-        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
-            _ in randomNumber = Int.random(in: 1...6)
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            timer?.invalidate()
-            timer = nil
-            isRolling = false
+            .navigationTitle("ToDoリスト")
         }
     }
 }
