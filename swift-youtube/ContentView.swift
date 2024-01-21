@@ -8,18 +8,62 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var inputText = ""
+    @State private var  randomNumber = 1
+    @State private var timer: Timer?
+    @State private var isRolling = false
+    @State var isSHowSecondView = false
     
     var body: some View {
-        VStack(spacing: 20) {
-            TextField("ここに文字を入力", text: $inputText)
-                .keyboardType(.numberPad)
-            Text("価格：" + inputText)
-            Text("消費税8％：\((Double(inputText) ?? 0) * 0.08)")
-            Text("消費税10％：\((Double(inputText) ?? 0) * 0.1)")
-            
+        NavigationStack {
+            VStack(spacing: 20) {
+                Spacer()
+                Image(systemName: "die.face.\(randomNumber)")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width/2)
+                    .padding()
+                Spacer()
+                Button {
+                    playDice()
+                } label: {
+                    Text("サイコロを振る")
+                        .padding()
+                        .background(Color.orange)
+                        .foregroundColor(.black)
+                        .cornerRadius(10)
+                }
+                .disabled(isRolling)
+                Spacer()
+                NavigationLink {
+                    SecondView()
+                } label: {
+                    Text("SecondViewへナビ遷移")
+                }
+                Button("SecondViewへモーダル遷移") {
+                    isSHowSecondView = true
+                }
+                .padding()
+                .sheet(isPresented: $isSHowSecondView) {
+                    SecondView()
+                }
+
+            }
+            .padding()
+            .navigationTitle("画面1")
         }
-        .padding()
+    }
+    
+    func playDice() {
+        print("ボタンが押されたよ")
+        isRolling = true
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) {
+            _ in randomNumber = Int.random(in: 1...6)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            timer?.invalidate()
+            timer = nil
+            isRolling = false
+        }
     }
 }
 
